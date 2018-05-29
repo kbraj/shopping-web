@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="categories-list-container">
+    <mat-list role="list">
+        <mat-list-item role="listitem" class="category-item"  (click)="filterByCategory()">
+            All Categories
+            <mat-divider></mat-divider>
+          </mat-list-item>
+      <mat-list-item role="listitem" class="category-item" *ngFor="let category of category$ | async" (click)="filterByCategory(category.name)">
+        {{category.name}}
+        <mat-divider></mat-divider>
+      </mat-list-item>
+
+    </mat-list>
+  </div>
+  <div class="products-container">
+    <mat-grid-list cols="2" rowHeight="300" gutterSize="15px">
+      <mat-grid-tile *ngFor="let product of products">
+        <mat-card class="product-card">
+          <mat-card-content>
+            <img mat-card-image [src]="product.imageUrl" *ngIf="product.imageUrl">
+          </mat-card-content>
+        </mat-card>
+        <mat-grid-tile-footer>
+          <button class="add-to-cart-btn" mat-raised-button color="primary">Add to cart</button>
+        </mat-grid-tile-footer>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="cell">
+    <form #f="ngForm" class="product-form" (ngSubmit)="save(f.value)">
+      <mat-form-field class="product-full-width">
+        <input #title="ngModel" required [(ngModel)]="product.title" name="title" matInput placeholder="Title">
+        <mat-error *ngIf="title.touched && title.invalid">
+          Title is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="product-full-width">
+        <input #price="ngModel" required [(ngModel)]="product.price" name="price" matInput type="number" placeholder="Price" [min]="0">
+        <mat-error *ngIf="price.touched && price.errors?.required">
+          Price is required
+        </mat-error>
+        <mat-error *ngIf="price.errors?.min">
+          Price should be zero or higher.
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="product-full-width">
+        <mat-select required #category="ngModel" [(ngModel)]="product.category" name="category" placeholder="Cateogory">
+          <mat-option *ngFor="let c of category$ | async" [value]="c.name">
+            {{ c.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="category.touched && category.invalid">
+          Price is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="product-full-width">
+        <input #imageUrl="ngModel" [(ngModel)]="product.imageUrl" name="imageUrl" matInput placeholder="Image Url" required url>
+        <mat-error *ngIf="imageUrl.touched && imageUrl.errors?.required">
+          Category is required
+        </mat-error>
+        <mat-error *ngIf="imageUrl.errors?.url">
+          Please enter valid url.
+        </mat-error>
+      </mat-form-field>
+
+
+      <button type="submit" mat-raised-button color="primary">Save</button>
+      <button *ngIf="product._id" type="button" (click)="delete(product._id)" mat-raised-button color="warn">Delete</button>
+    </form>
+  </div>
+  <div class="cell">
+    <mat-card class="product-card">
+      <img mat-card-image [src]="product.imageUrl" *ngIf="product.imageUrl">
+      <h3>{{product.title}}</h3>
+      <p>
+        {{product.price | currency:'USD':true}}
+      </p>
+    </mat-card>
+  </div>
+</div>

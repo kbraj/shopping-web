@@ -1,0 +1,28 @@
+.product-form {
+    width: 100%;
+}
+
+.product-full-width {
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.cell {
+    display: flex;
+    flex-grow: 1;
+    flex-basis: 0;
+    margin: 10px;
+}
+
+.product-card {
+    width: 100%;
+}
+
+button{
+    border-radius: 2px;
+    margin: 5px; 
+}

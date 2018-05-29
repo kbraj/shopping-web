@@ -1,0 +1,16 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    
+    <a mat-button routerLink="/">Home</a>
+
+    <a mat-button routerLink="/shopping-cart">Shopping Cart</a>
+    <span class="example-spacer"></span>
+    <button mat-button [matMenuTriggerFor]="menu">Menu</button>
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item routerLink="/orders">My Orders</a>
+      <a mat-menu-item routerLink="/admin/orders">Manage Orders</a>
+      <a mat-menu-item routerLink="/admin/products">Manage Products</a>
+      <a mat-menu-item routerLink="/shopping-cart">Log out</a>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
