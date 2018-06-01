@@ -18,4 +18,8 @@ app.use("/product", productController);
 var categoryController = require("./controllers/cateogoryController");
 app.use("/category", categoryController);
 
+// Create link to Angular build directory
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
+
 module.exports = app;

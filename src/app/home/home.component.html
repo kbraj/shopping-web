@@ -18,6 +18,10 @@
         <mat-card class="product-card">
           <mat-card-content>
             <img mat-card-image [src]="product.imageUrl" *ngIf="product.imageUrl">
+            <h3>{{product.title}}</h3>
+            <p>
+              {{product.price | currency:'USD':true}}
+            </p>
           </mat-card-content>
         </mat-card>
         <mat-grid-tile-footer>
