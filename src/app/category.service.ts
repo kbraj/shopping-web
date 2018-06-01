@@ -6,7 +6,7 @@ import "rxjs/add/operator/map";
   providedIn: "root"
 })
 export class CategoryService {
-  baseUrl = "http://localhost:3000"
+  baseUrl = "/api"
   constructor(private http: Http) {}
 
 

@@ -13,10 +13,14 @@ app.use(function(req, res, next) {
 });
 
 var productController = require("./controllers/productController");
-app.use("/product", productController);
+app.use("/api/product", productController);
 
 var categoryController = require("./controllers/cateogoryController");
-app.use("/category", categoryController);
+app.use("/api/category", categoryController);
+
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/index.html'));
+});
 
 // Create link to Angular build directory
 var distDir = __dirname + "/dist/";

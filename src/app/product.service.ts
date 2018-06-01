@@ -5,7 +5,7 @@ import { Http } from "@angular/http";
   providedIn: "root"
 })
 export class ProductService {
-  baseUrl = "http://localhost:3000";
+  baseUrl = "/api";
   constructor(private http: Http) {}
 
   create(product) {
